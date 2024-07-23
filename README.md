@@ -58,3 +58,7 @@ An example project about Mobile automation (Android & iOS) testing using Webdriv
 <h4>Allure Report</h4>
 
 use `npm run report` to open the test report
+
+Execution Video:
+
+[![Watch the video](https://raw.githubusercontent.com/tanujapatel/wdio_appium_cucumber/executionVideo/thumbnail.jpg)](https://raw.githubusercontent.com/tanujapatel/wdio_appium_cucumber/executionVideo/execution_recording.mp4)
