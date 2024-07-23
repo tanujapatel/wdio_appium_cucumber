@@ -61,5 +61,11 @@ use `npm run report` to open the test report
 
 Execution Video:
 
+ios simulator execution :
+
 https://github.com/user-attachments/assets/f5af56a7-7151-485a-83ec-7e9bd09b6cda
+
+android emulator execution:
+
+https://github.com/user-attachments/assets/2a59ebfc-fa5f-4853-a475-8c54b390be56
 
