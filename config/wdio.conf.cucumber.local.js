@@ -3,13 +3,24 @@ let { join } = require('path');
 const allure = require('allure-commandline');
 const { driver } = require('@wdio/globals');
 
-const localCapabilities = {
-	platformName: 'iOS', // or "iOS"
-	'appium:app': join(process.cwd(), './app/demoAppIos.zip'),//'./app/simulator-ios.zip'),
-	'appium:deviceName': 'iPhone 15', // or "iPhone Simulator"
-	'appium:platformVersion': '17.5', // or "16.2" (for running iOS v16)
-	'appium:automationName': 'XCUITest', // or "XCUITest"
+const localCapabilitiesIOS = {
+	platformName: 'iOS',
+	'appium:app': join(process.cwd(), './app/demoAppIos.zip'),
+	'appium:deviceName': 'iPhone 15', 
+	'appium:platformVersion': '17.5', 
+	'appium:automationName': 'XCUITest', 
 	'appium:deviceOrientation': 'portrait',
+};
+const localCapabilitiesAndroid = {
+	platformName: 'Android', 
+	'appium:deviceName': 'device1 API 33',
+	'appium:udid': 'emulator-5554', 
+	'appium:automationName': 'UiAutomator2',
+	'appium:app': join(process.cwd(), './app/demoAppAndroid1.apk'),
+	'appium:appPackage': 'com.swaglabsmobileapp',
+	'appium:appActivity': 'com.swaglabsmobileapp.MainActivity',
+	'appium:autoLaunch': true, //false change
+	'appium:fullReset': true
 };
 
 exports.config = {
@@ -39,7 +50,7 @@ exports.config = {
 	//
 	specs: [
 		// ToDo: define location for spec files here
-		'../../tests/ios/cucumber/features/*.feature'
+		'../tests/features/*.feature'
 	],
 	// Patterns to exclude.
 	exclude: [
@@ -61,7 +72,7 @@ exports.config = {
 	// and 30 processes will get spawned. The property handles how many capabilities
 	// from the same test should run tests.
 	//
-	maxInstances: 1,
+	maxInstances: 2,
 	//
 	// If you have trouble getting all important capabilities together, check out the
 	// Sauce Labs platform configurator - a great tool to configure your capabilities:
@@ -69,7 +80,8 @@ exports.config = {
 	//
 	capabilities: [
 		// capabilities for local Appium web tests on an Android Emulator
-		localCapabilities
+		localCapabilitiesIOS,
+		localCapabilitiesAndroid
 	],
 	//
 	// ===================
@@ -143,7 +155,7 @@ exports.config = {
 	// see also: https://webdriver.io/docs/dot-reporter
 	reporters: [
 		['allure', {
-			outputDir: 'reports/allure-ios',
+			outputDir: 'reports',
 			useCucumberStepReporter: true
 			// disableWebdriverStepsReporting: true,
 			// disableWebdriverScreenshotsReporting: true,
@@ -155,7 +167,7 @@ exports.config = {
 	cucumberOpts: {
 		timeout: 60000,
 		require: [
-			'./tests/ios/cucumber/steps/*.js'
+			'./tests/steps/*.js'
 		]
 	},
 	//
@@ -311,7 +323,7 @@ exports.config = {
 	// onComplete: function(exitCode, config, capabilities, results) {
 	onComplete: function() {
 		const reportError = new Error('Could not generate Allure report');
-		const generation = allure(['generate', 'reports/allure-ios', '--clean']);
+		const generation = allure(['generate', 'reports', '--clean']);
 		return new Promise((resolve, reject) => {
 			const generationTimeout = setTimeout(
 				() => reject(reportError),

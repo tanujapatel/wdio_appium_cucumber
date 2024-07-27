@@ -28,23 +28,14 @@ An example project about Mobile automation (Android & iOS) testing using Webdriv
 
 <h3><ins>How to run the test:</h3>
         
-<h4>Android:</h4>
+<h4>Android and IOS in parallel</h4>
 
 - all the test
-    - `npm run test-android-bdd`
+    - `npm run test-bdd`
 - specific feature / test file
-    - `npm run test-android-bdd --spec ./to/file/location.feature`
+    - `npm run test-bdd --spec ./to/file/location.feature`
 - specific test case or suite using tags
-    - `npm run test-android-bdd --cucumberOpts.tagExpression='@sanity and @stage'`
-
-<h4>iOS</h4>
-
-- all the test
-    - `npm run test-ios-bdd`
-- specific feature / test file
-    - `npm run test-ios-bdd --spec ./to/file/location.feature`
-- specific test case or suite using tags
-    - `npm run test-ios-bdd --cucumberOpts.tagExpression='@sanity and @stage'`
+    - `npm run test-bdd --cucumberOpts.tagExpression='@loginWithValidDetails'`
 
 
 <h3><ins>Common issue might happen:</h3>

@@ -7,11 +7,9 @@
     "test": "tests"
   },
   "scripts": {
-    "test-android-bdd": "wdio run ./config/android/wdio.conf.android.cucumber.local.js",
-    "test-ios-bdd": "wdio run ./config/ios/wdio.conf.ios.cucumber.local.js",
-    "test-ios-bdd-tag": "wdio run ./config/ios/wdio.conf.ios.cucumber.local.js --cucumberOpts.tagExpression='@loginWithValidDetails'",
-    "generate-report-ios": "allure generate ./reports/allure-ios --clean && allure open",
-    "generate-report-android": "allure generate ./reports/allure-android --clean && allure open",
+    "test-bdd": "wdio run ./config/wdio.conf.cucumber.local.js",
+    "test-bdd-tag": "wdio run ./config/wdio.conf.cucumber.local.js --cucumberOpts.tagExpression='@loginWithValidDetails'",
+    "generate-report": "allure generate ./reports --clean && allure open",
     "report": "allure open"
   },
   "keywords": [],
